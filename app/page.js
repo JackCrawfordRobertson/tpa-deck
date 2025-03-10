@@ -1,101 +1,101 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+import TitleSlide from "@/components/slides/TitleSlide";
+import SectionTitle from "@/components/SectionTitle";
+import Contents from "@/components/Contents";
+
+import Usage1 from "@/components/slides/Usage/Usage1";
+import Usage2 from "@/components/slides/Usage/Usage2";
+import Usage3 from "@/components/slides/Usage/Usage3";
+import Usage4C from "@/components/slides/Usage/Usage4C";
+
+import Reliability1 from "@/components/slides/Reliability/Reliability1";
+import Reliability2 from "@/components/slides/Reliability/Reliability2";
+import Reliability3 from "@/components/slides/Reliability/Reliability3";
+
+
+import BreakSlide from "@/components/BreakSlide";
+import Explain from "@/components/slides/KMedoids/Explain"
+
+import KMedoids1 from "@/components/slides/KMedoids/KMedoids1"
+
+const slides = [
+    { id: 0, title: "Intro", component: <TitleSlide title="LEGO AND THE MEDOIDS"   subheading="Assembling Payment Insights, One Data Brick at a Time 🧱" /> },
+    { id: 2, title: "Contents", component: <Contents /> },
+    { id: 1, title: "Pillar One: Usage", component: <SectionTitle title="Pillar One: Usage" subtitle="The Great Device Divide" /> },
+    
+    { id: 3, title: "Usage 1", component: <Usage1 /> },
+    { id: 4, title: "Usage 2", component: <Usage2 /> },
+    { id: 5, title: "Usage 3", component: <Usage3 /> },
+    { id: 6, title: "Usage 4C", component: <Usage4C /> },
+
+    { id: 7, title: "Pillar Two: Reliability", component: <SectionTitle title="Pillar Two: Reliability" subtitle="The Hidden Costs of Payment Choice" /> },
+    { id: 8, title: "Reliability 1", component: <Reliability1 /> },
+    { id: 9, title: "Reliability 2", component: <Reliability2 /> },
+    { id: 10, title: "Reliability 3", component: <Reliability3 /> },
+
+    { id: 11, title: "Breath", component: <BreakSlide /> },
+    { id: 12, title: "Explain", component: <Explain /> },
+
+    { id: 13, title: "Pillar Three: Patterns", component: <SectionTitle title="Pillar Three: Patterns" subtitle="Making Sense of Payment Behaviour" /> },
+    { id: 14, title: "KMedoids1", component: <KMedoids1 /> },
+
+    
+
+
+];
+
+export default function Presentation() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight" && currentSlide < slides.length - 1) {
+                setCurrentSlide((prev) => prev + 1);
+            } else if (e.key === "ArrowLeft" && currentSlide > 0) {
+                setCurrentSlide((prev) => prev - 1);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [currentSlide]);
+
+    return (
+        <div className="w-screen h-screen flex flex-col justify-center items-center overflow-hidden relative">
+            {/* Slide Display */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -30, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
+                    className="absolute w-full h-full flex justify-center items-center"
+                >
+                    {slides[currentSlide].component}
+                </motion.div>
+            </AnimatePresence>
+
+{/*         
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] flex justify-center bg-white shadow-lg rounded-lg p-2">
+                {slides.map((slide, index) => (
+                    <button
+                        key={slide.id}
+                        className={`px-3 py-1 text-sm font-medium rounded-md mx-1 transition-all ${
+                            index === currentSlide
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                        onClick={() => setCurrentSlide(index)}
+                    >
+                        {slide.title}
+                    </button>
+                ))}
+            </div> */}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
