@@ -14,17 +14,19 @@ import Usage4C from "@/components/slides/Usage/Usage4C";
 
 import Reliability1 from "@/components/slides/Reliability/Reliability1";
 import Reliability2 from "@/components/slides/Reliability/Reliability2";
-import Reliability3 from "@/components/slides/Reliability/Reliability3";
 
 
 import BreakSlide from "@/components/BreakSlide";
 import Explain from "@/components/slides/KMedoids/Explain"
 
+import KMedoids1Legend from "@/components/slides/KMedoids/KMedoids1Legend";
 import KMedoids1 from "@/components/slides/KMedoids/KMedoids1"
+
+import ConclusionSlide from "@/components/ConclusionSlide"
 
 const slides = [
     { id: 0, title: "Intro", component: <TitleSlide title="LEGO AND THE MEDOIDS"   subheading="Assembling Payment Insights, One Data Brick at a Time 🧱" /> },
-    { id: 2, title: "Contents", component: <Contents /> },
+          { id: 2, title: "Contents", component: <Contents /> },
     { id: 1, title: "Pillar One: Usage", component: <SectionTitle title="Pillar One: Usage" subtitle="The Great Device Divide" /> },
     
     { id: 3, title: "Usage 1", component: <Usage1 /> },
@@ -35,13 +37,20 @@ const slides = [
     { id: 7, title: "Pillar Two: Reliability", component: <SectionTitle title="Pillar Two: Reliability" subtitle="The Hidden Costs of Payment Choice" /> },
     { id: 8, title: "Reliability 1", component: <Reliability1 /> },
     { id: 9, title: "Reliability 2", component: <Reliability2 /> },
-    { id: 10, title: "Reliability 3", component: <Reliability3 /> },
 
-    { id: 11, title: "Breath", component: <BreakSlide /> },
-    { id: 12, title: "Explain", component: <Explain /> },
+    { id: 10, title: "Breath", component: <BreakSlide /> },
+    { id: 11, title: "Explain", component: <Explain /> },
 
-    { id: 13, title: "Pillar Three: Patterns", component: <SectionTitle title="Pillar Three: Patterns" subtitle="Making Sense of Payment Behaviour" /> },
+    { id: 12, title: "Pillar Three: Patterns", component: <SectionTitle title="Pillar Three: Patterns" subtitle="Making Sense of Payment Behaviour" /> },
+    { id: 13, title: "KMedoids1Legend", component: <KMedoids1Legend /> },
     { id: 14, title: "KMedoids1", component: <KMedoids1 /> },
+    { id: 15, title: "ConclusionSlide", component:   <ConclusionSlide
+        title="Payments Intelligence"
+        subheading="Turning insights into action"
+        qrCode="/QR_Code.svg"
+      
+    /> },
+
 
     
 
@@ -80,8 +89,8 @@ export default function Presentation() {
                 </motion.div>
             </AnimatePresence>
 
-{/*         
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] flex justify-center bg-white shadow-lg rounded-lg p-2">
+        
+            {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] flex justify-center bg-white shadow-lg rounded-lg p-2">
                 {slides.map((slide, index) => (
                     <button
                         key={slide.id}

@@ -32,6 +32,32 @@ const data = Object.keys(rawData).map((key) => ({
   Refunded: rawData[key].Refunded ?? 0
 }));
 
+// Custom Tooltip Component with better spacing
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="p-4 border border-gray-300 rounded-lg shadow-md bg-white text-sm">
+        <div className="font-semibold text-gray-800 mb-2">Transaction Type</div>
+        <div className="space-y-2">
+          {payload.map((item) => (
+            <div key={item.name} className="flex justify-between items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-4 h-4 rounded-full"
+                  style={{ backgroundColor: item.color }}
+                ></span>
+                <span className="text-gray-700">{item.name}</span>
+              </div>
+              <span className="font-semibold text-gray-900 text-base">{item.value.toFixed(2)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
+
 export default function ChartComponent() {
   return (
     <Card className="bg-white border border-border shadow-md">
@@ -55,7 +81,7 @@ export default function ChartComponent() {
                   style: { textAnchor: "middle", fontSize: "14px", fill: "hsl(var(--foreground))" }
                 }}
               />
-              <Tooltip formatter={(value) => `${value.toFixed(1)}%`} />
+              <Tooltip content={<CustomTooltip />} cursor={{ fill: "transparent" }} />
               <Legend />
               <Bar dataKey="Chargeback" fill="hsl(var(--chart-1))" />
               <Bar dataKey="Completed" fill="hsl(var(--chart-2))" />

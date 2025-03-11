@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const COLOURS = ["#ff0000", "#ffcc00", "#0077b6", "#009933", "#6a0572"];
+const COLOURS = ["#e4573d", "#14967f", "#2c536c", "#f5c24c", "#f89840"];
 
 // Dimensions for each LEGO brick
 const BRICK_SIZE = { width: 40, height: 20 };
@@ -22,7 +22,6 @@ const STAGES = [
   "Sorting begins. Similar bricks group together. All red bricks in one pile, all blue in another.",
   "Each group now has a medoid, the brick that best represents its group.",
   "Patterns become clear. Deeper insights form.",
-  "Let’s take a look at what these groups actually tell us."
 ];
 
 export default function LegoMedoidExplainer() {
@@ -70,7 +69,7 @@ export default function LegoMedoidExplainer() {
    * To position bricks neatly when grouped by colour, we track usage counts
    * so that each colour forms its own column without overlap.
    */
-  const colourUsageCounts = { "#ff0000": 0, "#ffcc00": 0, "#0077b6": 0, "#009933": 0, "#6a0572": 0 };
+  const colourUsageCounts = { "#e4573d": 0, "#14967f": 0, "#2c536c": 0, "#f5c24c": 0, "#f89840": 0 };
 
   return (
     <Card

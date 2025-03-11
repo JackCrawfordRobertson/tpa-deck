@@ -21,9 +21,9 @@ export default function BreakSlide() {
                     particles: {
                         number: { value: 60 },
                         color: { value: "#40916c" },
-                        links: { enable: true, distance: 120, color: "#52b788", opacity: 0.3 },
+                        links: { enable: true, distance: 120, color: "#52b788", opacity: 1 },
                         move: { enable: true, speed: 1.2 },
-                        size: { value: 3 },
+                        size: { value: 5 },
                     },
                     interactivity: {
                         events: {
@@ -51,12 +51,12 @@ export default function BreakSlide() {
 
             {/* Lighthearted Subtext - No Exit Animation */}
             <motion.p
-                className="text-2xl opacity-80 mt-4 text-[#2d6a4f] z-30"
+                className="text-[3rem] opacity-80 mt-4 text-[#2d6a4f] z-30"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             >
-                Let’s reflect.
+                And Reflect.
             </motion.p>
 
             {/* Logos at Bottom-Right */}

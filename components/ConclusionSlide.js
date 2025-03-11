@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { useCallback } from "react";
 import { loadSlim } from "tsparticles-slim";
 import Particles from "react-tsparticles";
+import Image from "next/image";
 
-export default function TitleSlide({ title, subheading, logo1, logo2 }) {
+export default function ConclusionSlide({ title, subheading, qrCode, logo1, logo2 }) {
     // tsParticles Init
     const particlesInit = useCallback(async (engine) => {
         await loadSlim(engine);
@@ -51,16 +52,28 @@ export default function TitleSlide({ title, subheading, logo1, logo2 }) {
                 <p className="text-3xl opacity-80 mt-4">{subheading}</p>
             </motion.div>
 
-            {/* Logos at Bottom-Right */}
-            <div className="absolute bottom-6 right-8 flex items-center space-x-4">
+            {/* QR Code (Bottom Left) */}
+            <div className="absolute bottom-6 left-8">
+                <Image
+                    src={qrCode || "/QR_Code.svg"} // Default placeholder if no QR provided
+                    alt="QR Code"
+                    width={160}
+                    height={160}
+                    className="w-100 h-100 opacity-100"
+                />
+                <p className="text-lg opacity-70 mt-2">Scan for more insights</p>
+            </div>
+
+           {/* Logos at Bottom-Right */}
+           <div className="absolute bottom-6 right-8 flex items-center space-x-4">
                 <img
-                    src={logo1 || "/logo/Payments_Association_Logo_white.svg"}
+                    src={"/logo/Payments_Association_Logo_white.svg"}
                     alt="Logo 1"
                     className="w-24 h-24 opacity-100"
                 />
                 <span className="text-6xl font-bold opacity-60">×</span>
                 <img
-                    src={logo2 || "/logo/PAY360_2025_Logo_white.svg"}
+                    src={"/logo/PAY360_2025_Logo_white.svg"}
                     alt="Logo 2"
                     className="w-24 h-24 opacity-100"
                 />
