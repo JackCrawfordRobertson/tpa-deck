@@ -21,23 +21,22 @@ const data = [
   { category: "Pending", value: 7.14 }
 ];
 
-// Custom Tooltip
+
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
-    const { category, value } = payload[0].payload;
-    return (
-      <div className="p-4 border border-gray-300 rounded-lg shadow-md bg-white text-sm">
-        <div className="font-semibold text-gray-800 mb-2">{category}</div>
-        <div className="flex justify-between items-center gap-4">
-          <span className="text-gray-700">Value:</span>
-          <span className="font-semibold text-gray-900 text-base">{value.toFixed(2)}%</span>
-        </div>
-      </div>
-    );
+      const { category, value } = payload[0].payload;
+      return (
+          <div className="p-5 border border-gray-500 rounded-lg shadow-md bg-white text-base">
+              <div className="font-semibold text-gray-900 mb-3 text-xl">{category}</div>
+              <div className="flex justify-between items-center gap-5">
+                  <span className="text-gray-800 text-lg">Value:</span>
+                  <span className="font-semibold text-gray-900 text-xl">{value.toFixed(2)}%</span>
+              </div>
+          </div>
+      );
   }
   return null;
 };
-
 export default function ChartComponent() {
   return (
     <Card className="bg-white border border-border shadow-md">

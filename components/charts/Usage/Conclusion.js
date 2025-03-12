@@ -21,23 +21,22 @@ const data = [
   { name: "Tablet", Chargeback: 22.22, Completed: 11.11, Failed: 0, Pending: 55.56, Refunded: 11.11 }
 ];
 
-// Custom Tooltip Component with better spacing
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="p-4 border border-gray-300 rounded-lg shadow-md bg-white text-sm">
-        <div className="font-semibold text-gray-800 mb-2">Transaction Type</div>
-        <div className="space-y-2">
+      <div className="p-5 border border-gray-500 rounded-lg shadow-md bg-white text-base">
+        <div className="font-semibold text-gray-900 mb-3 text-lg">Transaction Type</div>
+        <div className="space-y-3">
           {payload.map((item) => (
-            <div key={item.name} className="flex justify-between items-center gap-4">
-              <div className="flex items-center gap-2">
+            <div key={item.name} className="flex justify-between items-center gap-5">
+              <div className="flex items-center gap-3">
                 <span
-                  className="w-4 h-4 rounded-full"
+                  className="w-5 h-5 rounded-full"
                   style={{ backgroundColor: item.color }}
                 ></span>
-                <span className="text-gray-700">{item.name}</span>
+                <span className="text-gray-800 text-lg">{item.name}</span>
               </div>
-              <span className="font-semibold text-gray-900 text-base">{item.value.toFixed(2)}%</span>
+              <span className="font-semibold text-gray-900 text-lg">{item.value.toFixed(2)}%</span>
             </div>
           ))}
         </div>

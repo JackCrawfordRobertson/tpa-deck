@@ -15,25 +15,24 @@ const clusterInfo = {
   4: { title: "Smartwatch Users with High Failure Rates", description: "Wearable payments fail often due to UX limitations.", section: "Usage", color: "hsl(var(--chart-1))" },
 };
 
-// Custom Tooltip Component
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="p-4 border border-gray-300 rounded-lg shadow-md bg-white text-sm">
-        <div className="font-semibold text-gray-800 mb-2">Cluster Group {data.cluster}</div>
-        <div className="space-y-2">
-          <div className="flex justify-between items-center gap-4">
-            <span className="text-gray-700">Transaction Amount:</span>
-            <span className="font-semibold text-gray-900 text-base">£{data.x.toFixed(2)}</span>
+      <div className="p-5 border border-gray-500 rounded-lg shadow-md bg-white text-base">
+        <div className="font-semibold text-gray-900 mb-3 text-lg">Cluster Group {data.cluster}</div>
+        <div className="space-y-3">
+          <div className="flex justify-between items-center gap-5">
+            <span className="text-gray-800 text-lg">Transaction Amount:</span>
+            <span className="font-semibold text-gray-900 text-lg">£{data.x.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between items-center gap-4">
-            <span className="text-gray-700">Customer Segment:</span>
-            <span className="font-semibold text-gray-900">{data.y}</span>
+          <div className="flex justify-between items-center gap-5">
+            <span className="text-gray-800 text-lg">Customer Segment:</span>
+            <span className="font-semibold text-gray-900 text-lg">{data.y}</span>
           </div>
-          <div className="flex justify-between items-center gap-4">
-            <span className="text-gray-700">Transaction Count:</span>
-            <span className="font-semibold text-gray-900">{data.size}</span>
+          <div className="flex justify-between items-center gap-5">
+            <span className="text-gray-800 text-lg">Transaction Count:</span>
+            <span className="font-semibold text-gray-900 text-lg">{data.size}</span>
           </div>
         </div>
       </div>
