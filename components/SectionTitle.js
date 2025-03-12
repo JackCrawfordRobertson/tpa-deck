@@ -60,11 +60,19 @@ export default function SectionTitle({ title, subtitle }) {
                 {subtitle}
             </motion.h2>
 
-            {/* Logos at Bottom-Right */}
-            <div className="absolute bottom-6 right-8 flex items-center space-x-4 z-10">
-                <img src="/logo/Payments Association Logo.svg" alt="Logo 1" className="w-24 h-24 opacity-100" />
+          {/* Logos at Bottom-Right */}
+          <div className="absolute bottom-6 right-8 flex items-center space-x-4">
+                <img
+                    src={ "/logo/Payments Association Logo.svg"}
+                    alt="Logo 1"
+                    className="w-24 h-24 opacity-100"
+                />
                 <span className="text-6xl font-bold opacity-60">×</span>
-                <img src="/logo/PAY360 2025 Logo.svg" alt="Logo 2" className="w-24 h-24 opacity-100" />
+                <img
+                    src={"/logo/PAY360 2025 Logo.svg"}
+                    alt="Logo 2"
+                    className="w-24 h-24 opacity-100"
+                />
             </div>
         </div>
     );
