@@ -41,7 +41,7 @@ const slides = [
     { id: 10, title: "Breath", component: <BreakSlide /> },
     { id: 11, title: "Explain", component: <Explain /> },
 
-    { id: 12, title: "Pillar Three: Patterns", component: <SectionTitle title="Pillar Three: Patterns" subtitle="Making Sense of Payment Behaviour" /> },
+    { id: 12, title: "Pillar Three: Patterns", component: <SectionTitle title="Pillar Three: Patterns" subtitle="K-Medoids: Making Sense of Payment Behaviour" /> },
     { id: 13, title: "KMedoids1Legend", component: <KMedoids1Legend /> },
     { id: 14, title: "KMedoids1", component: <KMedoids1 /> },
     { id: 15, title: "ConclusionSlide", component:   <ConclusionSlide
